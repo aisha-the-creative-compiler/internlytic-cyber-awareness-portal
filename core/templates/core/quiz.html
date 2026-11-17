@@ -1,0 +1,171 @@
+
+<section class="container">
+
+    <a href="/" class="primary-btn">← Back to Home</a>
+
+    <h1>Cybersecurity Quiz</h1>
+    <p>Test your knowledge of online safety and cybersecurity!</p>
+
+    <div class="quiz-box">
+
+    <p id="progress">Question 1 of 5</p>
+
+    <h2 id="question">Loading question...</h2>
+
+    <div id="answer-buttons"></div>
+
+    <button id="next-btn" style="display: none;">
+        Next Question
+    </button>
+
+    <p id="score"></p>
+</div>
+
+</section>
+
+<script>
+const questions = [
+    {
+        question: "What is phishing?",
+        answers: [
+            { text: "A type of cyberattack", correct: true },
+            { text: "A computer game", correct: false },
+            { text: "A programming language", correct: false },
+            { text: "A web browser", correct: false }
+        ],
+        explanation: "Phishing is an attempt to trick people into revealing sensitive information."
+    },
+    {
+        question: "Which password is the strongest?",
+        answers: [
+            { text: "123456", correct: false },
+            { text: "password", correct: false },
+            { text: "Aisha123", correct: false },
+            { text: "T9#kLm!82@q", correct: true }
+        ],
+        explanation: "A strong password should be long and use a mixture of character types."
+    },
+    {
+        question: "What should you do with a suspicious link?",
+        answers: [
+            { text: "Click it immediately", correct: false },
+            { text: "Share it with friends", correct: false },
+            { text: "Avoid clicking it", correct: true },
+            { text: "Enter your password", correct: false }
+        ],
+        explanation: "Avoid suspicious links. Verify the sender and website before taking action."
+    },
+    {
+        question: "You receive this message: 'URGENT! Your bank account will close. Click this unknown link and enter your password.' Is it safe?",
+        answers: [
+            { text: "Yes, because it says urgent", correct: false },
+            { text: "No, it is suspicious and may be phishing", correct: true }
+        ],
+        explanation: "Urgent threats and requests for passwords through unknown links are common phishing warning signs."
+    },
+    {
+        question: "You receive a message from your school saying: 'Your assignment deadline is Friday. Please check the announcement on the official school portal.' Is this message safer?",
+        answers: [
+            { text: "Yes, if I verify it through the official school portal", correct: true },
+            { text: "No, every school message is dangerous", correct: false }
+        ],
+        explanation: "A message directing you to verify information through a known official portal is safer. Always check the address yourself."
+    }
+];
+
+let currentQuestionIndex = 0;
+let score = 0;
+
+const questionElement = document.getElementById("question");
+const answerButtons = document.getElementById("answer-buttons");
+const nextButton = document.getElementById("next-btn");
+const scoreElement = document.getElementById("score");
+const progressElement = document.getElementById("progress");
+
+function startQuiz() {
+    currentQuestionIndex = 0;
+    score = 0;
+    scoreElement.innerText = "";
+    nextButton.innerText = "Next Question";
+    showQuestion();
+}
+
+function showQuestion() {
+    resetState();
+
+let currentQuestion = questions[currentQuestionIndex];
+
+progressElement.innerText =
+    "Question " + (currentQuestionIndex + 1) + " of " + questions.length;
+
+questionElement.innerText =
+    (currentQuestionIndex + 1) + ". " + currentQuestion.question;
+    currentQuestion.answers.forEach(answer => {
+        const button = document.createElement("button");
+        button.innerText = answer.text;
+        button.style.display = "block";
+        button.style.margin = "10px 0";
+        button.style.padding = "10px";
+        button.style.cursor = "pointer";
+
+        button.addEventListener("click", () => selectAnswer(button, answer.correct));
+        answerButtons.appendChild(button);
+    });
+}
+
+function resetState() {
+    nextButton.style.display = "none";
+    answerButtons.innerHTML = "";
+}
+
+function selectAnswer(selectedButton, correct) {
+    if (correct) {
+        selectedButton.style.backgroundColor = "lightgreen";
+        score++;
+    } else {
+        selectedButton.style.backgroundColor = "salmon";
+    }
+
+        Array.from(answerButtons.children).forEach(button => {
+        button.disabled = true;
+    });
+
+    const currentQuestion = questions[currentQuestionIndex];
+
+    const explanation = document.createElement("p");
+    explanation.innerText = currentQuestion.explanation;
+    explanation.style.marginTop = "15px";
+    explanation.style.fontWeight = "bold";
+
+    answerButtons.appendChild(explanation);
+
+    nextButton.style.display = "block";
+}
+
+nextButton.addEventListener("click", () => {
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex < questions.length) {
+        showQuestion();
+    } else {
+        showResult();
+    }
+});
+
+function showResult() {
+    resetState();
+    questionElement.innerText = "Quiz Completed!";
+    progressElement.innerText = "Quiz completed!";
+    scoreElement.innerText =
+        "Your Score: " + score + " / " + questions.length;
+    nextButton.innerText = "Restart Quiz";
+    nextButton.style.display = "block";
+    nextButton.onclick = () => {
+        nextButton.onclick = null;
+        startQuiz();
+    };
+}
+
+startQuiz();
+</script>
+

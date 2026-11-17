@@ -1,36 +1,371 @@
 
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyber Awareness Training Portal</title>
+    <meta name="description" content="Learn essential cybersecurity skills with the Internlytic Cyber Awareness Training Portal.">
+    <title>CyberGuard | Awareness Training Portal</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f7fb;
+            color: #17233c;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #101d36;
+            color: white;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #39d5b0;
+        }
+
+        nav a {
+            color: #e2eaf5;
+            text-decoration: none;
+            margin-left: 22px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            color: #39d5b0;
+        }
+
+        .hero {
+            background: linear-gradient(120deg, #101d36, #183c62);
+            color: white;
+            padding: 85px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .tag {
+            color: #39d5b0;
+            font-weight: bold;
+            letter-spacing: 2px;
+            font-size: 13px;
+        }
+
+        .hero h1 {
+            font-size: clamp(35px, 5vw, 54px);
+            line-height: 1.15;
+            margin: 18px 0;
+        }
+
+        .hero h1 span {
+            color: #39d5b0;
+        }
+
+        .hero p {
+            color: #d1deed;
+            max-width: 570px;
+            margin-bottom: 28px;
+        }
+
+        .primary-btn {
+            display: inline-block;
+            background: #39d5b0;
+            color: #10223b;
+            padding: 13px 24px;
+            border-radius: 7px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .primary-btn:hover {
+            background: #6ce6c9;
+        }
+
+        .hero-icon {
+            font-size: 115px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 25px;
+            padding: 35px;
+        }
+
+        .container {
+            padding: 65px 8%;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-heading h2 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .section-heading p {
+            color: #68758b;
+        }
+
+        .modules {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+        }
+
+        .module-card {
+            background: white;
+            padding: 27px;
+            border-radius: 12px;
+            border: 1px solid #e4eaf2;
+            box-shadow: 0 5px 20px rgba(20, 40, 70, 0.05);
+            transition: transform 0.2s;
+        }
+
+        .module-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .module-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .module-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .module-card p {
+            color: #68758b;
+            font-size: 14px;
+        }
+
+        .module-status {
+            display: inline-block;
+            margin-top: 18px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #a66a16;
+            background: #fff4df;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+
+        .notice {
+            background: #e8f8f4;
+            border: 1px solid #c5eee3;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .notice h3 {
+            margin-bottom: 8px;
+            color: #126b58;
+        }
+
+        .notice p {
+            color: #42675e;
+            font-size: 14px;
+        }
+
+        footer {
+            background: #101d36;
+            color: #cbd6e5;
+            text-align: center;
+            padding: 25px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 650px) {
+            header {
+                flex-direction: column;
+            }
+
+            nav {
+                text-align: center;
+            }
+
+            nav a {
+                margin: 0 7px;
+                font-size: 12px;
+            }
+
+            .hero {
+                padding: 60px 7%;
+            }
+
+            .hero-icon {
+                font-size: 75px;
+                padding: 20px;
+            }
+
+            .container {
+                padding: 45px 7%;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
     <header>
-        <h1>Cyber Awareness Training Portal</h1>
-        <p>Learn. Identify. Protect.</p>
+        <div class="logo">Cyber<span>Guard.</span></div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#modules">Learning Modules</a>
+            <a href="#quiz">Quiz</a>
+            <a href="#about">About</a>
+        </nav>
     </header>
 
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="tag">INTERNLYTIC CYBER AWARENESS PROGRAM</div>
+
+            <h1>Stay Safe.<br>Think Smart.<br><span>Be Cyber Aware.</span></h1>
+
+            <p>
+                Build your cybersecurity knowledge, recognize online threats,
+                and learn practical ways to protect yourself in the digital world.
+            </p>
+
+            <a href="#modules" class="primary-btn">Explore Learning Modules →</a>
+        </div>
+
+        <div class="hero-icon">🛡️</div>
+    </section>
+
     <main>
-        <h2>Welcome to Cyber Awareness Training</h2>
-        <p>
-            Develop your cybersecurity knowledge and learn how
-            to stay safe online.
-        </p>
+        <section class="container" id="modules">
+            <div class="section-heading">
+                <h2>Explore Learning Modules</h2>
+                <p>Learn essential cybersecurity skills through simple lessons.</p>
+            </div>
 
-        <h2>Learning Modules</h2>
-        <ul>
-            <li>Phishing Awareness</li>
-            <li>Password Safety</li>
-            <li>Suspicious Links</li>
-            <li>Secure Coding</li>
-        </ul>
+            <div class="modules">
 
-        <h2>Test Your Knowledge</h2>
-        <p>Practice identifying safe and unsafe messages.</p>
+                <article class="module-card">
+    <div class="module-icon">🎣</div>
+    <h3>Phishing Awareness</h3>
+    <p>
+        Understand phishing attacks and learn to identify
+        suspicious emails and messages.
+    </p>
+    <a href="{% url 'phishing' %}" class="module-status">
+        Start Lesson →
+    </a>
+</article>
+
+                <article class="module-card">
+                    <div class="module-icon">🔐</div>
+                    <h3>Password Safety</h3>
+                    <p>
+                        Discover strong password practices and learn how
+                        to protect your accounts.
+                    </p>
+                    <span class="module-status">Coming Soon</span>
+                </article>
+
+                <article class="module-card">
+                    <div class="module-icon">🔗</div>
+                    <h3>Suspicious Links</h3>
+                    <p>
+                        Learn how to recognize misleading URLs and avoid
+                        unsafe links online.
+                    </p>
+                    <span class="module-status">Coming Soon</span>
+                </article>
+
+                <article class="module-card">
+                    <div class="module-icon">💻</div>
+                    <h3>Secure Coding</h3>
+                    <p>
+                        Explore input validation, password hashing,
+                        and safe error handling.
+                    </p>
+                    <span class="module-status">Coming Soon</span>
+                </article>
+
+            </div>
+
+            
+<div class="notice" id="quiz">
+    <h3>🧠 Test Your Cybersecurity Knowledge</h3>
+
+    <p>
+        Challenge yourself with our interactive cybersecurity quiz.
+        Test your knowledge and discover how much you've learned!
+    </p>
+
+    <a href="{% url 'quiz' %}" class="primary-btn">
+        Start Quiz →
+    </a>
+</div>
+
+        </section>
+
+        <section class="container" id="about">
+            <div class="section-heading">
+                <h2>Learn. Identify. Protect.</h2>
+                <p>
+                    An educational cybersecurity awareness project
+                    developed for the Internlytic Technologies internship.
+                </p>
+            </div>
+        </section>
     </main>
+
+    <footer>
+        <p>© 2026 Internlytic Cyber Awareness Training Portal.</p>
+        <p>Educational project | Learn cybersecurity responsibly.</p>
+    </footer>
+
+<section class="container">
+    <h2>🛡️ Secure-Coding Checklist</h2>
+    <p>Learn the essential practices for building safer applications.</p>
+
+    <div class="notice">
+        <h3>1. Input Validation</h3>
+        <p>Check user input before processing it. Reject invalid or unexpected data.</p>
+    </div>
+
+    <div class="notice">
+        <h3>2. Password Hashing</h3>
+        <p>Never store passwords as plain text. Use secure password-hashing methods such as Argon2 or PBKDF2.</p>
+    </div>
+
+    <div class="notice">
+        <h3>3. Safe Error Handling</h3>
+        <p>Show users helpful error messages without exposing passwords, database details or sensitive technical information.</p>
+    </div>
+</section>
 
 </body>
 </html>
