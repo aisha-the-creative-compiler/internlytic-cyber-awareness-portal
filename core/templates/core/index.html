@@ -1,371 +1,436 @@
 
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Learn essential cybersecurity skills with the Internlytic Cyber Awareness Training Portal.">
-    <title>CyberGuard | Awareness Training Portal</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CyberGuard cybersecurity learning and awareness platform.">
+<title>CyberGuard | Security Learning Hub</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f7fb;
-            color: #17233c;
-            line-height: 1.6;
-        }
-
-        header {
-            background: #101d36;
-            color: white;
-            padding: 20px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .logo {
-            font-size: 23px;
-            font-weight: bold;
-        }
-
-        .logo span {
-            color: #39d5b0;
-        }
-
-        nav a {
-            color: #e2eaf5;
-            text-decoration: none;
-            margin-left: 22px;
-            font-size: 14px;
-        }
-
-        nav a:hover {
-            color: #39d5b0;
-        }
-
-        .hero {
-            background: linear-gradient(120deg, #101d36, #183c62);
-            color: white;
-            padding: 85px 8%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-
-        .hero-content {
-            max-width: 650px;
-        }
-
-        .tag {
-            color: #39d5b0;
-            font-weight: bold;
-            letter-spacing: 2px;
-            font-size: 13px;
-        }
-
-        .hero h1 {
-            font-size: clamp(35px, 5vw, 54px);
-            line-height: 1.15;
-            margin: 18px 0;
-        }
-
-        .hero h1 span {
-            color: #39d5b0;
-        }
-
-        .hero p {
-            color: #d1deed;
-            max-width: 570px;
-            margin-bottom: 28px;
-        }
-
-        .primary-btn {
-            display: inline-block;
-            background: #39d5b0;
-            color: #10223b;
-            padding: 13px 24px;
-            border-radius: 7px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .primary-btn:hover {
-            background: #6ce6c9;
-        }
-
-        .hero-icon {
-            font-size: 115px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 25px;
-            padding: 35px;
-        }
-
-        .container {
-            padding: 65px 8%;
-        }
-
-        .section-heading {
-            text-align: center;
-            margin-bottom: 35px;
-        }
-
-        .section-heading h2 {
-            font-size: 30px;
-            margin-bottom: 8px;
-        }
-
-        .section-heading p {
-            color: #68758b;
-        }
-
-        .modules {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 22px;
-        }
-
-        .module-card {
-            background: white;
-            padding: 27px;
-            border-radius: 12px;
-            border: 1px solid #e4eaf2;
-            box-shadow: 0 5px 20px rgba(20, 40, 70, 0.05);
-            transition: transform 0.2s;
-        }
-
-        .module-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .module-icon {
-            font-size: 32px;
-            margin-bottom: 15px;
-        }
-
-        .module-card h3 {
-            margin-bottom: 10px;
-        }
-
-        .module-card p {
-            color: #68758b;
-            font-size: 14px;
-        }
-
-        .module-status {
-            display: inline-block;
-            margin-top: 18px;
-            font-size: 12px;
-            font-weight: bold;
-            color: #a66a16;
-            background: #fff4df;
-            padding: 5px 10px;
-            border-radius: 20px;
-        }
-
-        .notice {
-            background: #e8f8f4;
-            border: 1px solid #c5eee3;
-            border-radius: 12px;
-            padding: 25px;
-            text-align: center;
-            margin-top: 35px;
-        }
-
-        .notice h3 {
-            margin-bottom: 8px;
-            color: #126b58;
-        }
-
-        .notice p {
-            color: #42675e;
-            font-size: 14px;
-        }
-
-        footer {
-            background: #101d36;
-            color: #cbd6e5;
-            text-align: center;
-            padding: 25px;
-            font-size: 13px;
-        }
-
-        @media (max-width: 650px) {
-            header {
-                flex-direction: column;
-            }
-
-            nav {
-                text-align: center;
-            }
-
-            nav a {
-                margin: 0 7px;
-                font-size: 12px;
-            }
-
-            .hero {
-                padding: 60px 7%;
-            }
-
-            .hero-icon {
-                font-size: 75px;
-                padding: 20px;
-            }
-
-            .container {
-                padding: 45px 7%;
-            }
-        }
-    </style>
+<style>
+:root {
+    --bg:#f3f6fc;
+    --panel:#ffffff;
+    --text:#17243b;
+    --muted:#718096;
+    --border:#e3eaf3;
+    --navy:#101d36;
+    --accent:#16bda1;
+    --blue:#3978ed;
+    --soft:#e9f8f5;
+}
+body.dark {
+    --bg:#0b1220;
+    --panel:#151f30;
+    --text:#edf3ff;
+    --muted:#a3b1c5;
+    --border:#29374b;
+    --navy:#101a2b;
+    --soft:#163a39;
+}
+* {box-sizing:border-box;margin:0;padding:0}
+body {
+    font-family:Inter,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    transition:.2s;
+}
+a {text-decoration:none;color:inherit}
+button {font:inherit;cursor:pointer}
+.app {display:flex;min-height:100vh}
+.sidebar {
+    width:245px;background:var(--navy);color:white;
+    padding:25px 17px;position:fixed;inset:0 auto 0 0;
+    display:flex;flex-direction:column;z-index:10;
+}
+.brand {font-size:24px;font-weight:800;padding:5px 12px 30px}
+.brand span {color:#39d5b0}
+.side-label {font-size:10px;letter-spacing:2px;color:#91a3bd;padding:12px}
+.nav-link {
+    display:block;padding:12px 13px;margin:3px 0;
+    border-radius:9px;color:#d5dfed;font-size:14px;
+}
+.nav-link:hover,.nav-link.active {background:#263b58;color:#48dfc1}
+.sidebar-bottom {margin-top:auto;font-size:12px;color:#a9b9cd;padding:15px 12px}
+.main {margin-left:245px;width:calc(100% - 245px);padding:27px 4% 50px}
+.topbar {display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:30px}
+.topbar small {color:var(--muted)}
+.top-actions {display:flex;gap:10px;align-items:center}
+.icon-btn {
+    border:1px solid var(--border);background:var(--panel);
+    color:var(--text);padding:9px 13px;border-radius:9px;
+}
+.hero {
+    background:linear-gradient(115deg,#112342,#164c70);
+    color:white;border-radius:18px;padding:38px;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:20px;margin-bottom:27px;
+}
+.hero h1 {font-size:clamp(27px,4vw,39px);line-height:1.2;margin:10px 0}
+.hero p {color:#d1e1f1;max-width:550px;margin-bottom:20px}
+.hero-tag {color:#51e1c0;font-size:11px;letter-spacing:2px;font-weight:bold}
+.hero-symbol {font-size:76px;opacity:.9}
+.btn {
+    display:inline-block;background:var(--accent);color:#092b2b;
+    padding:11px 17px;border:0;border-radius:8px;font-weight:bold;
+}
+.btn:hover {filter:brightness(1.08)}
+.section-title {font-size:21px;margin-bottom:5px}
+.section-sub {font-size:13px;color:var(--muted);margin-bottom:18px}
+.stats {
+    display:grid;grid-template-columns:repeat(3,1fr);
+    gap:15px;margin-bottom:30px;
+}
+.stat,.card,.assistant,.settings-box {
+    background:var(--panel);border:1px solid var(--border);
+    border-radius:13px;padding:20px;
+}
+.stat-label {font-size:12px;color:var(--muted)}
+.stat-number {font-size:27px;font-weight:800;margin-top:5px}
+.modules {
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:16px;margin-bottom:30px;
+}
+.card {transition:.2s}
+.card:hover {transform:translateY(-3px);border-color:var(--accent)}
+.card-icon {font-size:28px;margin-bottom:10px}
+.card h3 {font-size:17px;margin-bottom:5px}
+.card p {font-size:13px;color:var(--muted);min-height:42px}
+.card-actions {display:flex;gap:10px;align-items:center;margin-top:17px;flex-wrap:wrap}
+.card-link {color:var(--blue);font-size:13px;font-weight:bold}
+.complete-btn {
+    border:1px solid var(--border);border-radius:7px;
+    padding:6px 9px;background:transparent;color:var(--text);font-size:11px;
+}
+.complete-btn.done {background:var(--soft);color:var(--accent)}
+.progress-track {height:8px;background:var(--border);border-radius:20px;overflow:hidden;margin-top:12px}
+.progress-fill {height:100%;width:0;background:var(--accent);transition:.3s}
+.assistant {margin:28px 0}
+.assistant-head {display:flex;align-items:center;gap:12px;margin-bottom:15px}
+.assistant-icon {background:#e4f7f3;padding:11px;border-radius:12px;font-size:23px}
+.assistant-head p {font-size:12px;color:var(--muted)}
+.chat-window {
+    background:var(--bg);border:1px solid var(--border);
+    border-radius:10px;padding:15px;min-height:135px;
+    max-height:270px;overflow-y:auto;margin-bottom:12px;
+}
+.message {padding:10px 13px;border-radius:10px;margin:8px 0;font-size:13px;max-width:90%}
+.bot {background:var(--panel);border:1px solid var(--border)}
+.user {background:#dff5f0;color:#163a39;margin-left:auto}
+.chat-form {display:flex;gap:8px}
+.chat-form input {
+    flex:1;min-width:0;padding:12px;border:1px solid var(--border);
+    border-radius:9px;background:var(--bg);color:var(--text);
+}
+.tool-row {display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.tool-row button {
+    background:var(--soft);color:var(--text);border:1px solid var(--border);
+    border-radius:20px;padding:7px 11px;font-size:11px;
+}
+.checklist {display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.check-item {background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:15px}
+.check-item h4 {font-size:14px;margin-bottom:5px}
+.check-item p {font-size:12px;color:var(--muted)}
+.settings-box {margin-top:28px}
+.settings-box p {font-size:13px;color:var(--muted);margin:7px 0}
+footer {text-align:center;color:var(--muted);font-size:12px;padding:35px 10px}
+.mobile-menu {display:none}
+@media(max-width:850px) {
+    .sidebar {width:205px}
+    .main {margin-left:205px;width:calc(100% - 205px)}
+    .checklist {grid-template-columns:1fr}
+}
+@media(max-width:650px) {
+    .sidebar {display:none}
+    .main {margin:0;width:100%;padding:18px 5%}
+    .mobile-menu {display:inline-block}
+    .hero {padding:26px;flex-wrap:wrap}
+    .hero-symbol {font-size:50px}
+    .stats {grid-template-columns:1fr}
+    .modules {grid-template-columns:1fr}
+    .topbar {align-items:flex-start}
+    .top-actions {flex-wrap:wrap;justify-content:flex-end}
+}
+</style>
 </head>
 
 <body>
+<div class="app">
 
-    <header>
-        <div class="logo">Cyber<span>Guard.</span></div>
+<aside class="sidebar">
+    <div class="brand">Cyber<span>Guard.</span></div>
+    <div class="side-label">WORKSPACE</div>
+    <a class="nav-link active" href="#dashboard">▦ Dashboard</a>
+    <a class="nav-link" href="#modules">▤ Learning Modules</a>
+    <a class="nav-link" href="#assistant">✧ Security Assistant</a>
+    <a class="nav-link" href="{% url 'quiz' %}">✎ Knowledge Quiz</a>
+    <div class="side-label">RESOURCES</div>
+    <a class="nav-link" href="#checklist">✓ Secure Coding</a>
+    <a class="nav-link" href="#settings">⚙ Settings</a>
+    <div class="sidebar-bottom">
+        <strong>CYBERGUARD</strong><br>
+        Learn Smart. Stay Safe.<br>
+        Educational Security Hub
+    </div>
+</aside>
 
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#modules">Learning Modules</a>
-            <a href="#quiz">Quiz</a>
-            <a href="#about">About</a>
-        </nav>
-    </header>
+<main class="main" id="dashboard">
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="tag">INTERNLYTIC CYBER AWARENESS PROGRAM</div>
-
-            <h1>Stay Safe.<br>Think Smart.<br><span>Be Cyber Aware.</span></h1>
-
-            <p>
-                Build your cybersecurity knowledge, recognize online threats,
-                and learn practical ways to protect yourself in the digital world.
-            </p>
-
-            <a href="#modules" class="primary-btn">Explore Learning Modules →</a>
+    <div class="topbar">
+        <div>
+            <small>INTERNLYTIC CYBER AWARENESS PROGRAM</small>
+            <h2>Security Learning Hub</h2>
         </div>
+        <div class="top-actions">
+            <button class="icon-btn mobile-menu" onclick="alert('Use the learning links below to navigate.')">☰</button>
+            <button class="icon-btn" onclick="toggleTheme()" id="themeButton">☾ Theme</button>
+        </div>
+    </div>
 
-        <div class="hero-icon">🛡️</div>
+    <section class="hero">
+        <div>
+            <div class="hero-tag">YOUR DIGITAL SAFETY STARTS HERE</div>
+            <h1>Think Before You Click.<br><span style="color:#51e1c0">Stay Cyber Smart.</span></h1>
+            <p>Build practical cybersecurity skills, recognize online threats and develop safer digital habits through interactive learning.</p>
+            <a href="#modules" class="btn">Explore Learning →</a>
+        </div>
+        <div class="hero-symbol">🛡️</div>
     </section>
 
-    <main>
-        <section class="container" id="modules">
-            <div class="section-heading">
-                <h2>Explore Learning Modules</h2>
-                <p>Learn essential cybersecurity skills through simple lessons.</p>
+    <section>
+        <h2 class="section-title">Your Learning Overview</h2>
+        <p class="section-sub">Track your progress as you explore cybersecurity.</p>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-label">Modules completed</div>
+                <div class="stat-number" id="completedCount">0 / 4</div>
             </div>
-
-            <div class="modules">
-
-                <article class="module-card">
-    <div class="module-icon">🎣</div>
-    <h3>Phishing Awareness</h3>
-    <p>
-        Understand phishing attacks and learn to identify
-        suspicious emails and messages.
-    </p>
-    <a href="{% url 'phishing' %}" class="module-status">
-        Start Lesson →
-    </a>
-</article>
-
-                <article class="module-card">
-                    <div class="module-icon">🔐</div>
-                    <h3>Password Safety</h3>
-                    <p>
-                        Discover strong password practices and learn how
-                        to protect your accounts.
-                    </p>
-                    <span class="module-status">Coming Soon</span>
-                </article>
-
-                <article class="module-card">
-                    <div class="module-icon">🔗</div>
-                    <h3>Suspicious Links</h3>
-                    <p>
-                        Learn how to recognize misleading URLs and avoid
-                        unsafe links online.
-                    </p>
-                    <span class="module-status">Coming Soon</span>
-                </article>
-
-                <article class="module-card">
-                    <div class="module-icon">💻</div>
-                    <h3>Secure Coding</h3>
-                    <p>
-                        Explore input validation, password hashing,
-                        and safe error handling.
-                    </p>
-                    <span class="module-status">Coming Soon</span>
-                </article>
-
+            <div class="stat">
+                <div class="stat-label">Learning progress</div>
+                <div class="stat-number" id="progressPercent">0%</div>
+                <div class="progress-track"><div class="progress-fill" id="progressBar"></div></div>
             </div>
-
-            
-<div class="notice" id="quiz">
-    <h3>🧠 Test Your Cybersecurity Knowledge</h3>
-
-    <p>
-        Challenge yourself with our interactive cybersecurity quiz.
-        Test your knowledge and discover how much you've learned!
-    </p>
-
-    <a href="{% url 'quiz' %}" class="primary-btn">
-        Start Quiz →
-    </a>
-</div>
-
-        </section>
-
-        <section class="container" id="about">
-            <div class="section-heading">
-                <h2>Learn. Identify. Protect.</h2>
-                <p>
-                    An educational cybersecurity awareness project
-                    developed for the Internlytic Technologies internship.
-                </p>
+            <div class="stat">
+                <div class="stat-label">Knowledge assessment</div>
+                <div class="stat-number">5 Questions</div>
+                <a class="card-link" href="{% url 'quiz' %}">Take the quiz →</a>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <section id="modules">
+        <h2 class="section-title">Explore Learning Modules</h2>
+        <p class="section-sub">Choose a topic and strengthen your online security knowledge.</p>
+
+        <div class="modules">
+            <article class="card">
+                <div class="card-icon">🎣</div>
+                <h3>Phishing Awareness</h3>
+                <p>Recognize fraudulent emails, deceptive messages and social engineering attempts.</p>
+                <div class="card-actions">
+                    <a class="card-link" href="{% url 'phishing' %}">Start lesson →</a>
+                    <button class="complete-btn" data-module="phishing">Mark complete</button>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">🔐</div>
+                <h3>Password Safety</h3>
+                <p>Learn strong password practices and understand how to protect your accounts.</p>
+                <div class="card-actions">
+                    <a class="card-link" href="{% url 'password_safety' %}">Start lesson →</a>
+                    <button class="complete-btn" data-module="password">Mark complete</button>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-icon">🔗</div>
+                <h3>Suspicious Links</h3>
+                <p>Understand misleading URLs and identify warning signs before opening links.</p>
+                <div class="card-actions">
+                    <a class="card-link" href="{% url 'suspicious_links' %}">Start lesson →</a>
+                    <button class="complete-btn" data-module="links">Mark complete</button>
+                </div>
+            </article>
+
+            <article class="card" id="checklist">
+                <div class="card-icon">💻</div>
+                <h3>Secure Coding</h3>
+                <p>Explore input validation, password hashing and safe error handling.</p>
+                <div class="card-actions">
+                    <a class="card-link" href="#secure-checklist">View checklist →</a>
+                    <button class="complete-btn" data-module="coding">Mark complete</button>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="assistant" id="assistant">
+        <div class="assistant-head">
+            <div class="assistant-icon">✧</div>
+            <div>
+                <h2 class="section-title">CyberGuard Security Assistant</h2>
+                <p>Ask educational questions about cybersecurity.</p>
+            </div>
+        </div>
+        <div class="chat-window" id="chatWindow" aria-live="polite">
+            <div class="message bot">Hello! I'm the CyberGuard learning assistant. Ask me about phishing, passwords, suspicious links or secure coding.</div>
+        </div>
+        <form class="chat-form" id="chatForm">
+            <input id="chatInput" type="text" placeholder="Ask a cybersecurity question..." autocomplete="off" required>
+            <button class="btn" type="submit">Send</button>
+            <button class="icon-btn" type="button" onclick="startVoice()" title="Speak your question">🎙️</button>
+        </form>
+        <div class="tool-row">
+            <button onclick="quickAsk('How can I identify phishing?')">Phishing tips</button>
+            <button onclick="quickAsk('How do I create a strong password?')">Password safety</button>
+            <button onclick="quickAsk('How do I check a suspicious link?')">Suspicious links</button>
+            <button onclick="quickAsk('Explain secure coding.')">Secure coding</button>
+        </div>
+        <p style="font-size:11px;color:var(--muted);margin-top:12px">
+            Educational demonstration assistant. Responses are based on built-in guidance, not a live AI service. Voice features depend on browser support.
+        </p>
+    </section>
+
+    <section id="secure-checklist">
+        <h2 class="section-title">Secure Coding Checklist</h2>
+        <p class="section-sub">Three important practices for safer application development.</p>
+        <div class="checklist">
+            <div class="check-item">
+                <h4>✓ Input Validation</h4>
+                <p>Validate user input on the server. Reject unexpected or invalid data.</p>
+            </div>
+            <div class="check-item">
+                <h4>✓ Password Hashing</h4>
+                <p>Never store plain-text passwords. Use trusted password hashing such as Argon2 or PBKDF2.</p>
+            </div>
+            <div class="check-item">
+                <h4>✓ Safe Error Handling</h4>
+                <p>Show helpful errors without exposing credentials or internal technical details.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="settings-box" id="settings">
+        <h2 class="section-title">Personalization Settings</h2>
+        <p>Choose the appearance that makes your learning experience comfortable.</p>
+        <button class="icon-btn" onclick="toggleTheme()">Switch light / dark appearance</button>
+        <p>Your theme and completed-module progress are saved locally in this browser. No password or sensitive information is collected by this dashboard.</p>
+    </section>
 
     <footer>
-        <p>© 2026 Internlytic Cyber Awareness Training Portal.</p>
-        <p>Educational project | Learn cybersecurity responsibly.</p>
+        © 2026 Internlytic Technologies | CyberGuard Cyber Awareness Training Portal<br>
+        Learn Smart. Stay Safe. Be Cyber Aware.
     </footer>
+</main>
+</div>
 
-<section class="container">
-    <h2>🛡️ Secure-Coding Checklist</h2>
-    <p>Learn the essential practices for building safer applications.</p>
+<script>
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+    const dark = document.body.classList.contains("dark");
+    localStorage.setItem("cyberguard-theme", dark ? "dark" : "light");
+    document.getElementById("themeButton").textContent = dark ? "☀ Light" : "☾ Theme";
+}
+if (localStorage.getItem("cyberguard-theme") === "dark") {
+    document.body.classList.add("dark");
+    document.getElementById("themeButton").textContent = "☀ Light";
+}
 
-    <div class="notice">
-        <h3>1. Input Validation</h3>
-        <p>Check user input before processing it. Reject invalid or unexpected data.</p>
-    </div>
+const moduleButtons = document.querySelectorAll("[data-module]");
+function updateProgress() {
+    const completed = JSON.parse(localStorage.getItem("cyberguard-completed") || "[]");
+    moduleButtons.forEach(button => {
+        const done = completed.includes(button.dataset.module);
+        button.classList.toggle("done", done);
+        button.textContent = done ? "✓ Completed" : "Mark complete";
+    });
+    document.getElementById("completedCount").textContent = completed.length + " / 4";
+    const percent = Math.round(completed.length / 4 * 100);
+    document.getElementById("progressPercent").textContent = percent + "%";
+    document.getElementById("progressBar").style.width = percent + "%";
+}
+moduleButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        let completed = JSON.parse(localStorage.getItem("cyberguard-completed") || "[]");
+        const id = button.dataset.module;
+        completed = completed.includes(id)
+            ? completed.filter(item => item !== id)
+            : [...completed, id];
+        localStorage.setItem("cyberguard-completed", JSON.stringify(completed));
+        updateProgress();
+    });
+});
+updateProgress();
 
-    <div class="notice">
-        <h3>2. Password Hashing</h3>
-        <p>Never store passwords as plain text. Use secure password-hashing methods such as Argon2 or PBKDF2.</p>
-    </div>
+const chatWindow = document.getElementById("chatWindow");
+const chatInput = document.getElementById("chatInput");
 
-    <div class="notice">
-        <h3>3. Safe Error Handling</h3>
-        <p>Show users helpful error messages without exposing passwords, database details or sensitive technical information.</p>
-    </div>
-</section>
+function addMessage(text, type) {
+    const message = document.createElement("div");
+    message.className = "message " + type;
+    message.textContent = text;
+    chatWindow.appendChild(message);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+}
 
+function getAnswer(question) {
+    const q = question.toLowerCase();
+
+    if (q.includes("phish") || q.includes("email") || q.includes("scam")) {
+        return "Phishing is an attempt to trick people into revealing information or clicking unsafe links. Watch for urgent language, unexpected attachments, unfamiliar senders and mismatched website addresses. Verify messages through an independent trusted channel.";
+    }
+    if (q.includes("password") || q.includes("account")) {
+        return "Use a long, unique password for every account. A password manager can help you create and store them. Enable multi-factor authentication wherever possible. Never share your passwords.";
+    }
+    if (q.includes("link") || q.includes("url") || q.includes("website")) {
+        return "Before opening a link, inspect the full domain carefully. Watch for misspellings, unexpected redirects and shortened URLs. When in doubt, navigate to the official website yourself instead of clicking the message link.";
+    }
+    if (q.includes("coding") || q.includes("validation") || q.includes("hash")) {
+        return "Secure coding includes server-side input validation, parameterized database queries, secure password hashing, access controls and safe error handling. Never expose credentials or sensitive technical details in error messages.";
+    }
+    if (q.includes("malware") || q.includes("virus")) {
+        return "Malware is software designed to harm, disrupt or gain unauthorized access to systems. Keep software updated, use trusted security tools, avoid unknown downloads and maintain backups.";
+    }
+    if (q.includes("two factor") || q.includes("mfa") || q.includes("authentication")) {
+        return "Multi-factor authentication adds another verification step beyond your password. An authenticator app or security key can help protect an account even if its password is compromised.";
+    }
+    return "I can help with phishing awareness, password safety, suspicious links, malware, multi-factor authentication and secure coding. Try asking about one of these topics. For urgent security incidents, contact your organization's security team.";
+}
+
+document.getElementById("chatForm").addEventListener("submit", event => {
+    event.preventDefault();
+    const question = chatInput.value.trim();
+    if (!question) return;
+    addMessage(question, "user");
+    chatInput.value = "";
+    const answer = getAnswer(question);
+    addMessage(answer, "bot");
+});
+
+function quickAsk(question) {
+    chatInput.value = question;
+    document.getElementById("chatForm").requestSubmit();
+}
+
+function startVoice() {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+        addMessage("Voice input is not supported in this browser. Please type your question instead.", "bot");
+        return;
+    }
+    const recognition = new SpeechRecognition();
+    recognition.lang = "en-US";
+    recognition.onresult = event => {
+        chatInput.value = event.results[0][0].transcript;
+        document.getElementById("chatForm").requestSubmit();
+    };
+    recognition.onerror = () => addMessage("Voice input could not be completed. Please try typing your question.", "bot");
+    recognition.start();
+}
+</script>
 </body>
 </html>
