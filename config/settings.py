@@ -26,9 +26,44 @@ SECRET_KEY = os.environ.get(
     'django-insecure-local-development-key-change-before-deployment'
 )
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Set DJANGO_DEBUG=True only for local development.
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False').strip().lower() == 'true'
 
-ALLOWED_HOSTS = []
+# Comma-separated hostnames can be supplied through the deployment environment.
+ALLOWED_HOSTS = [
+    host.strip()
+    for host in os.environ.get(
+        'DJANGO_ALLOWED_HOSTS',
+        '127.0.0.1,localhost,aishcarpediem.pythonanywhere.com'
+    ).split(',')
+    if host.strip()
+]
+
+# Trusted HTTPS origins for Django CSRF protection.
+CSRF_TRUSTED_ORIGINS = [
+    origin.strip()
+    for origin in os.environ.get(
+        'DJANGO_CSRF_TRUSTED_ORIGINS',
+        'https://aishcarpediem.pythonanywhere.com'
+    ).split(',')
+    if origin.strip()
+]
+
+# Respect the HTTPS protocol forwarded by the PythonAnywhere proxy.
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Enable production-only browser and transport protections.
+SECURE_SSL_REDIRECT = not DEBUG
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
+SECURE_CONTENT_TYPE_NOSNIFF = True
+X_FRAME_OPTIONS = 'DENY'
+SECURE_REFERRER_POLICY = 'same-origin'
+
+if not DEBUG:
+    SECURE_HSTS_SECONDS = 3600
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+    SECURE_HSTS_PRELOAD = False
 
 
 # Application definition
