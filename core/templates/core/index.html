@@ -380,25 +380,44 @@ function addMessage(text, type) {
 function getAnswer(question) {
     const q = question.toLowerCase();
 
+    // Identify the portal and explain its educational purpose.
+    if (q.includes("what is cyberguard") || q.includes("about cyberguard") || q.includes("what does this portal")) {
+        return "CyberGuard is an educational cybersecurity awareness portal created for the Internlytic Technologies Cyber Security & Secure Coding internship. It provides learning modules, a knowledge quiz, password-safety guidance and a secure-coding checklist.";
+    }
+    if (q.includes("who is this for") || q.includes("who can use") || q.includes("who is it for")) {
+        return "CyberGuard is designed for students, beginners, employees and everyday internet users who want to build safer online habits and learn basic cybersecurity concepts.";
+    }
+
+    // Give incident-response guidance before the general account/password answer.
+    if (q.includes("hacked") || q.includes("compromised") || q.includes("someone accessed") || q.includes("account stolen")) {
+        return "If you think an account was hacked: use a trusted device, go directly to the service's official website or app, change the password, sign out of other sessions, enable multi-factor authentication, and review recovery details and recent activity. If you cannot sign in, use the official account-recovery process. Contact the service or your organization's IT/security team. Do not share verification codes with anyone.";
+    }
+    if (q.includes("forgot password") || q.includes("reset password") || q.includes("can't remember password")) {
+        return "Open the service's official app or type its known website address yourself, then choose its password-reset option. Use the reset message only if you requested it, create a new unique password, and enable multi-factor authentication. Never share a reset link or verification code.";
+    }
+
     if (q.includes("phish") || q.includes("email") || q.includes("scam")) {
-        return "Phishing is an attempt to trick people into revealing information or clicking unsafe links. Watch for urgent language, unexpected attachments, unfamiliar senders and mismatched website addresses. Verify messages through an independent trusted channel.";
+        return "Phishing is an attempt to trick people into revealing information or clicking unsafe links. Watch for urgent language, unexpected attachments, unfamiliar senders and mismatched website addresses. Do not reply or open attachments. Verify the message through an independent trusted channel and report it using your organization's process.";
     }
     if (q.includes("password") || q.includes("account")) {
-        return "Use a long, unique password for every account. A password manager can help you create and store them. Enable multi-factor authentication wherever possible. Never share your passwords.";
+        return "Use a long, unique password for every account. A reputable password manager can help create and store passwords. Enable multi-factor authentication wherever possible, keep recovery details current and never share passwords or verification codes.";
     }
     if (q.includes("link") || q.includes("url") || q.includes("website")) {
-        return "Before opening a link, inspect the full domain carefully. Watch for misspellings, unexpected redirects and shortened URLs. When in doubt, navigate to the official website yourself instead of clicking the message link.";
+        return "Before opening a link, inspect the full domain carefully. Watch for misspellings, misleading subdomains, unexpected redirects and shortened URLs. HTTPS encrypts a connection but does not prove a site is trustworthy. When in doubt, navigate to the official website yourself.";
     }
-    if (q.includes("coding") || q.includes("validation") || q.includes("hash")) {
-        return "Secure coding includes server-side input validation, parameterized database queries, secure password hashing, access controls and safe error handling. Never expose credentials or sensitive technical details in error messages.";
+    if (q.includes("coding") || q.includes("validation") || q.includes("hash") || q.includes("secure code")) {
+        return "Secure coding includes server-side input validation, parameterized database queries, secure password hashing with a suitable password-hashing algorithm, access controls and safe error handling. Never store plaintext passwords or expose credentials and sensitive technical details in error messages.";
     }
     if (q.includes("malware") || q.includes("virus")) {
-        return "Malware is software designed to harm, disrupt or gain unauthorized access to systems. Keep software updated, use trusted security tools, avoid unknown downloads and maintain backups.";
+        return "Malware is software designed to harm, disrupt or gain unauthorized access to systems. Keep software updated, use trusted security tools, avoid unknown downloads and maintain backups. If you suspect infection, disconnect the affected device from networks when appropriate and contact a trusted IT professional.";
     }
-    if (q.includes("two factor") || q.includes("mfa") || q.includes("authentication")) {
-        return "Multi-factor authentication adds another verification step beyond your password. An authenticator app or security key can help protect an account even if its password is compromised.";
+    if (q.includes("two factor") || q.includes("two-factor") || q.includes("mfa") || q.includes("authentication")) {
+        return "Multi-factor authentication adds another verification step beyond your password. An authenticator app or security key can help protect an account even if its password is compromised. Never approve an unexpected sign-in prompt or share a one-time code.";
     }
-    return "I can help with phishing awareness, password safety, suspicious links, malware, multi-factor authentication and secure coding. Try asking about one of these topics. For urgent security incidents, contact your organization's security team.";
+    if (q.includes("hello") || q.includes("hi ") || q === "hi" || q.includes("hey")) {
+        return "Hello! I'm the CyberGuard educational assistant. Ask me about phishing, password safety, suspicious links, hacked accounts, malware, multi-factor authentication or secure coding.";
+    }
+    return "I'm CyberGuard's built-in educational assistant. I use predefined guidance, not a live AI service, and I cannot inspect accounts, devices or links. I can help with phishing awareness, password safety, suspicious links, account recovery, malware, multi-factor authentication and secure coding. For an active incident, contact the relevant service or your organization's security team.";
 }
 
 document.getElementById("chatForm").addEventListener("submit", event => {
