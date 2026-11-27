@@ -29,6 +29,12 @@ SECRET_KEY = os.environ.get(
 # Set DJANGO_DEBUG=True only for local development.
 DEBUG = os.environ.get('DJANGO_DEBUG', 'False').strip().lower() == 'true'
 
+if not DEBUG and SECRET_KEY == 'django-insecure-local-development-key-change-before-deployment':
+    from django.core.exceptions import ImproperlyConfigured
+    raise ImproperlyConfigured(
+        'Set DJANGO_SECRET_KEY to a private value in the production environment.'
+    )
+
 # Comma-separated hostnames can be supplied through the deployment environment.
 ALLOWED_HOSTS = [
     host.strip()
